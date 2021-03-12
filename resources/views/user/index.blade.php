@@ -24,9 +24,12 @@
             <div class="row">
                 <div class="col-xl-12">
                     <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target=".bs-add-users">Baru</button>
+                    <button type="button" class="btn btn-warning mb-3" data-toggle="modal" data-target=".bs-generate-users">Generate Voucher</button>
                     <button type="button" class="btn btn-info mb-3" onclick="reload_user()" title="Refresh data"><i class="ion ion-ios-refresh"></i></button>
 
                     <x-modal.users :profile="$profile" />
+
+                    <x-modal.generate :profile="$profile" />
 
                     @if(session('success'))
                         <div class="alert alert-success alert-dismissible fade show" role="alert">

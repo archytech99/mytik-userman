@@ -25,6 +25,7 @@ class HomeController extends Controller
     public function qrcode(Request $request)
     {
         $users = $this->router->get_users();
+        
         foreach ($users as $user) {
             if ($user['name'] != $request->username) {
                 continue;

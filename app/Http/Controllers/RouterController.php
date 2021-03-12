@@ -61,6 +61,15 @@ class RouterController //extends Controller
             if ($item->getProperty('server') != env('ROUTER_HOTSPOT_SERVER')) {
                 continue;
             } else {
+                $this->utils->setMenu('/ip dhcp-server lease');
+                $leased = $this->utils->get(
+                    $this->utils->find(
+                        Query::where('mac-address',
+                            $item->getProperty('mac-address')
+                        )
+                    ), 'host-name'
+                );
+                
                 $return[] = [
                     'id' => [
                         'id' => $item->getProperty('.id'),
@@ -75,6 +84,7 @@ class RouterController //extends Controller
                     'uptime' => $item->getProperty('uptime'),
                     'idle' => $item->getProperty('idle-time'),
                     'keepalive' => $item->getProperty('keepalive-timeout'),
+                    'leased' => $leased,
                     'comment' => $item->getProperty('comment'),
                     'bytes' => [
                         'in' => $item->getProperty('bytes-in'),
