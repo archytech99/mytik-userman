@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Pear2\Net\RouterOS\DataFlowException;
 use App\Pear2\Net\RouterOS\SocketException;
+use App\Session;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\ErrorHandler\Error\FatalError;
@@ -147,5 +149,52 @@ class HomeController extends Controller
         }
 
         return view('client.index');
+    }
+
+    public function showSession()
+    {
+        $data = [];
+        $session = Session::all();
+
+        if ($session) {
+            foreach ($session as $key=> $item) {
+                $user = User::query()->find($item->id)->first();
+                if ($user) {
+                    $last_log = $user->last_login;
+                } else {
+                    $last_log = null;
+                }
+
+                $data[] = [
+                    'id'=> $item->id,
+                    'hosts'=> $item->hosts,
+                    'username'=> $item->username,
+                    'port'=> $item->port,
+                    'last_log'=> date("D, M j Y h:i:s A T", strtotime($last_log))
+                ];
+            }
+        }
+
+        return $this->dataTables($data);
+    }
+
+    public function session(Request $request)
+    {
+        if ($request->input('del_id')) {
+            try {
+                $session = Session::query()->find($request->del_id)->first();
+                $session->delete();
+                return json_swal('Session berhasil dihapus','Berhasil!','success');
+            } catch (\Exception $exception) {
+                return json_swal($exception->getMessage(),'Berhasil!','success');
+            }
+        }
+
+        return view('session.index');
+    }
+
+    public function router(Request $request)
+    {
+        //
     }
 }
