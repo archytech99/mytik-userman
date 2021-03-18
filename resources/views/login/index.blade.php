@@ -79,7 +79,7 @@
                                                 @endif
                                             </select>
                                         </div>
-                                        <div class="col-sm-3">
+                                        <div class="col-sm-3 mt-4">
                                             <button type="submit" class="btn btn-outline-primary">Log In</button>
                                         </div>
                                     </div>
