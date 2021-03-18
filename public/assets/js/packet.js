@@ -11,7 +11,7 @@ function init_packet() {
         'searching'     : true,
         'ordering'      : true,
         'info'          : true,
-        'processing'    : true,
+        'processing'    : false,
         'serverSide'    : false,
         'autoWidth'     : false,
         'pagingType'    : 'full',

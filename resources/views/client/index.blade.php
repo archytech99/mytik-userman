@@ -23,6 +23,7 @@
 
             <div class="row">
                 <div class="col-xl-12">
+                    <button type="button" class="btn btn-info mb-3" onclick="reload_client()" title="Refresh data"><i class="ion ion-ios-refresh"></i></button>
                     <div class="card">
                         <div class="card-body">
                             <h4 class="mt-0 header-title mb-4">Hotspot Client Session</h4>
@@ -58,10 +59,6 @@
             const getClient = { "url" : "{{ route('client.show') }}", "type" : "GET" },
                 csrfToken = "{{ csrf_token() }}",
                 delClient = "{{ route('client') }}";
-
-            $(document).ready(function() {
-                setInterval( function () { reload_client() }, 5000);
-            });
         </script>
     </x-slot>
 </x-layouts.base>
