@@ -52,6 +52,13 @@ class LoginController extends Controller
                 'password' => $session->password
             ], true)) {
                 Auth::login(Auth::user(), true);
+                $this->router([
+                    'id'=> Auth::id(),
+                    'hosts'=> $session->hosts,
+                    'username'=> $session->username,
+                    'password'=> $session->password,
+                    'port'=> $session->port
+                ]);
                 return redirect(route('index'));
             } else {
                 return redirect(route('login'))->back()->with('error', 'Login Failed!!');
