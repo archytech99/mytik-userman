@@ -30,23 +30,27 @@ class RouterController
     public function card_index()
     {
         $this->utils->setMenu('/ip hotspot user');
-        $jml_user = $this->utils->count(Query::where('server', env('ROUTER_HOTSPOT_SERVER')));
+        // $jml_user = $this->utils->count(Query::where('server', env('ROUTER_HOTSPOT_SERVER')));
+        $jml_user = $this->utils->count();
 
         $this->utils->setMenu('/ip hotspot user profile');
-        $ml_user_profile = $this->utils->count(Query::where('address-list', 'userVoucher'));
+        // $jml_user_profile = $this->utils->count(Query::where('address-list', 'userVoucher'));
+        $jml_user_profile = $this->utils->count();
 
         $this->utils->setMenu('/ip hotspot active');
-        $jml_user_active = $this->utils->count(Query::where('server', env('ROUTER_HOTSPOT_SERVER')));
+        // $jml_user_active = $this->utils->count(Query::where('server', env('ROUTER_HOTSPOT_SERVER')));
+        $jml_user_active = $this->utils->count();
 
         $this->utils->setMenu('/ip hotspot host');
         $jml_hosts = $this->utils->count(
-            Query::where('server', env('ROUTER_HOTSPOT_SERVER'))
-                ->andWhere('bypassed', 'false')
+            /*Query::where('server', env('ROUTER_HOTSPOT_SERVER'))
+                ->andWhere('bypassed', 'false')*/
+            Query::Where('bypassed', 'false')
         );
 
         return [
             'jml_user'=> $jml_user,
-            'jml_user_profile'=> $ml_user_profile,
+            'jml_user_profile'=> $jml_user_profile,
             'jml_user_active'=> $jml_user_active,
             'jml_hosts'=> $jml_hosts
         ];
@@ -58,9 +62,9 @@ class RouterController
         $this->utils->setMenu('/ip hotspot active');
 
         foreach ($this->utils->getAll() as $item) {
-            if ($item->getProperty('server') != env('ROUTER_HOTSPOT_SERVER')) {
+            /*if ($item->getProperty('server') != env('ROUTER_HOTSPOT_SERVER')) {
                 continue;
-            } else {
+            } else {*/
                 $this->utils->setMenu('/ip dhcp-server lease');
                 $leased = $this->utils->get(
                     $this->utils->find(
@@ -95,7 +99,7 @@ class RouterController
                         'out' => $item->getProperty('packets-out')
                     ]
                 ];
-            }
+            // }
         }
 
         return $return;
@@ -125,9 +129,9 @@ class RouterController
         $this->utils->setMenu('/ip hotspot user');
 
         foreach ($this->utils->getAll() as $item) {
-            if ($item->getProperty('server') != env('ROUTER_HOTSPOT_SERVER')) {
+            /*if ($item->getProperty('server') != env('ROUTER_HOTSPOT_SERVER')) {
                 continue;
-            } else {
+            } else {*/
                 $return[] = [
                     'id' => [
                         'id'=> $item->getProperty('.id'),
@@ -152,7 +156,7 @@ class RouterController
                         'out' => $item->getProperty('packets-out')
                     ]
                 ];
-            }
+            // }
         }
 
         return $return;
@@ -225,9 +229,9 @@ class RouterController
         $this->utils->setMenu('/ip hotspot user profile');
 
         foreach ($this->utils->getAll() as $item) {
-            if ($item->getProperty('address-list') != 'userVoucher') {
+            /*if ($item->getProperty('address-list') != 'userVoucher') {
                 continue;
-            } else {
+            } else {*/
                 $return[] = [
                     'id'=> [
                         'id'=> $item->getProperty('.id'),
@@ -247,7 +251,7 @@ class RouterController
                     'proxy'=> $item->getProperty('transparent-proxy'),
                     'default'=> $item->getProperty('default')
                 ];
-            }
+            // }
         }
 
         return $return;
@@ -305,14 +309,14 @@ class RouterController
         $this->utils->setMenu('/ip hotspot user profile');
 
         foreach ($this->utils->getAll() as $item) {
-            if ($item->getProperty('address-list') != 'userVoucher') {
+            /*if ($item->getProperty('address-list') != 'userVoucher') {
                 continue;
-            } else {
+            } else {*/
                 $return[] = [
                     'id'=> $item->getProperty('.id'),
                     'name'=> $item->getProperty('name')
                 ];
-            }
+            // }
         }
 
         return $return;
@@ -324,9 +328,9 @@ class RouterController
         $this->utils->setMenu('/ip hotspot host');
 
         foreach ($this->utils->getAll() as $item) {
-            if ($item->getProperty('server') != env('ROUTER_HOTSPOT_SERVER')) {
+            /*if ($item->getProperty('server') != env('ROUTER_HOTSPOT_SERVER')) {
                 continue;
-            } elseif ($item->getProperty('bypassed') == 'true') {
+            } else*/if ($item->getProperty('bypassed') == 'true') {
                 continue;
             } else {
                 if ($item->getProperty('comment')) {
