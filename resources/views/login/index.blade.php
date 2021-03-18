@@ -50,7 +50,7 @@
                                         <div class="checkbox checkbox-primary">
                                             <div class="custom-control custom-checkbox">
                                                 <input type="checkbox" class="custom-control-input" id="session" name="session">
-                                                <label class="custom-control-label" for="session"> Simpan Login</label>
+                                                <label class="custom-control-label" for="session"> Simpan Sesi Login</label>
                                             </div>
                                         </div>
                                     </div>
@@ -72,11 +72,9 @@
                                     <div class="form-group row">
                                         <div class="col-sm-9 mb-4">
                                             <select class="custom-select" id="session" name="session">
-                                                @if(session_route())
-                                                @foreach(session_route() as $key=> $item)
+                                                @if(session_route()) @foreach(session_route() as $key=> $item)
                                                 <option value="{{ $item }}">{{ $item }} [{{ $key }}]</option>
-                                                @endforeach
-                                                @endif
+                                                @endforeach @endif
                                             </select>
                                         </div>
                                         <div class="col-sm-3">
