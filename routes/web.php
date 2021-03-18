@@ -1,5 +1,6 @@
 <?php
 
+use App\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
@@ -44,10 +45,9 @@ Route::middleware('auth')->group(function () {
 
 /* Guest Route */
 Route::middleware('guest')->group(function () {
-    Route::get('/login', function () {
-        return view('login.index');
-    })->name('login');
+    Route::view('/login', 'login.index')->name('login');
 
     Route::post('/login', 'LoginController@login');
+    Route::post('/session', 'LoginController@session')->name('session');
 });
 /* Guest Route */
