@@ -70,7 +70,7 @@
                                     @csrf
 
                                     <div class="form-group row">
-                                        <div class="col-sm-9">
+                                        <div class="col-sm-9 mb-4">
                                             <select class="custom-select" id="session" name="session">
                                                 @if(session_route())
                                                 @foreach(session_route() as $key=> $item)
@@ -79,7 +79,7 @@
                                                 @endif
                                             </select>
                                         </div>
-                                        <div class="col-sm-3 mt-4">
+                                        <div class="col-sm-3">
                                             <button type="submit" class="btn btn-outline-primary">Log In</button>
                                         </div>
                                     </div>
