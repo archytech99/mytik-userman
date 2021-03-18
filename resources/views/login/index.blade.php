@@ -19,8 +19,8 @@
 
                                 <div class="form-group">
                                     <div class="col-12">
-                                        <label for="ip_addr">IP. Address</label>
-                                        <input class="form-control" type="text" id="ip_addr" name="ip_addr" value="192.168.88.1" placeholder="192.168.88.1" required>
+                                        <label for="hosts">IP. Address</label>
+                                        <input class="form-control" type="text" id="hosts" name="hosts" value="192.168.88.1" placeholder="192.168.88.1" required>
                                     </div>
                                 </div>
 
@@ -45,13 +45,47 @@
                                     </div>
                                 </div>
 
+                                <div class="form-group">
+                                    <div class="col-12">
+                                        <div class="checkbox checkbox-primary">
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="session" name="session">
+                                                <label class="custom-control-label" for="session"> Simpan Login</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="form-group text-center mt-3">
                                     <div class="col-12">
-                                        <button id="dynamic-alert" type="button" class="btn btn-primary btn-block waves-effect waves-light" onclick="formSubmit();">Log In</button>
+                                        <button type="button" class="btn btn-primary btn-block waves-effect waves-light" onclick="formSubmit();">Log In</button>
                                     </div>
                                 </div>
 
                             </form>
+
+                            <div class="text-center">
+                                <p class="mt-4 text-muted">Atau</p>
+                                <form action="{{ route('session') }}" method="post" id="formSession" class="form-horizontal mt-4">
+                                    @csrf
+
+                                    <div class="form-group row">
+                                        <div class="col-sm-9">
+                                            <select class="custom-select" id="session" name="session">
+                                                @if(session_route())
+                                                @foreach(session_route() as $key=> $item)
+                                                <option value="{{ $item }}">{{ $item }} [{{ $key }}]</option>
+                                                @endforeach
+                                                @endif
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <button type="submit" class="btn btn-outline-primary">Log In</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
                         </div>
                     </div>
                 </div>

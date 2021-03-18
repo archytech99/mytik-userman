@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Pear2\Net\RouterOS\DataFlowException;
 use App\Pear2\Net\RouterOS\SocketException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,19 +14,21 @@ class HomeController extends Controller
 
     public function __construct()
     {
-        try {
-            $this->router = new RouterController(RouterController::login(
-                auth_user()->ip, auth_user()->user, auth_user()->pass, auth_user()->port
-            ));
-        } catch (FatalError | SocketException $exception) {
-            return false;
+        if (get_router_info() != false) {
+            try {
+                $this->router = new RouterController(RouterController::login(
+                    get_router_info()->host, get_router_info()->user, get_router_info()->pass, get_router_info()->port
+                ));
+            } catch (FatalError | DataFlowException | SocketException $exception) {
+                $this->router = null;
+            }
         }
     }
 
     public function qrcode(Request $request)
     {
         $users = $this->router->get_users();
-        
+
         foreach ($users as $user) {
             if ($user['name'] != $request->username) {
                 continue;

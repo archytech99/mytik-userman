@@ -8,7 +8,7 @@ use App\Pear2\Net\RouterOS\RouterErrorException;
 use App\Pear2\Net\RouterOS\Util;
 use Illuminate\Http\Request;
 
-class RouterController //extends Controller
+class RouterController
 {
     protected $clients;
     protected $utils;
@@ -69,7 +69,7 @@ class RouterController //extends Controller
                         )
                     ), 'host-name'
                 );
-                
+
                 $return[] = [
                     'id' => [
                         'id' => $item->getProperty('.id'),
