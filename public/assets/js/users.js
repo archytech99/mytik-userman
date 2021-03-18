@@ -50,20 +50,16 @@ function init_user() {
                 render: function ( data, type, full, meta ) {
                     return '\n' +
                         '<button type="button" class="badge badge-danger" title="Hapus voucher \'' + data.name + '\'"\n' +
-                        'data-name="' + data.name + '" data-desc="' + data.comment + '" onclick="return hapus_user(this)">-</button>\n';
-                }
-            },
-            { 'data': 'name',
-                render: function ( data, type, full, meta ) {
-                    return data + '\n' +
+                        'data-name="' + data.name + '" data-desc="' + data.comment + '" onclick="return hapus_user(this)">-</button>\n' +
                         '<form class="d-inline" action="' + qrCode + '" method="post">\n' +
                         '<input type="hidden" name="_token" value="' + csrfToken + '">\n' +
-                        '<input type="hidden" name="username" value="' + data + '">\n' +
+                        '<input type="hidden" name="username" value="' + data.name + '">\n' +
                         '<button type="submit" class="badge badge-primary" \n' +
-                        'title="Lihat voucher \'' + data + '\'"><span class="mdi mdi-file-find"></span></button>\n' +
+                        'title="Lihat voucher \'' + data.name + '\'"><span class="mdi mdi-file-find"></span></button>\n' +
                         '</form>';
                 }
             },
+            { 'data': 'name'},
             { 'data': 'uptime' },
             { 'data': 'comment' }
         ]
