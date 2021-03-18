@@ -24,6 +24,18 @@
                         </a>
                     </li>
 
+                    <li class="menu-title">Setting</li>
+                    <li>
+                        <a href="#" class="waves-effect">
+                            <i class="dripicons-time-reverse"></i><span> Session </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="waves-effect">
+                            <i class="dripicons-information"></i><span> Router </span>
+                        </a>
+                    </li>
+
                     {{--<li>
                         <a href="javascript:void(0);" class="waves-effect"><i class="dripicons-mail"></i><span> Email <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
                         <ul class="submenu">
