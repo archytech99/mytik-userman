@@ -37,8 +37,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/client/show', 'HomeController@showClient')->name('client.show');
     Route::delete('/client', 'HomeController@client');
 
-    Route::post('/qr-code', 'HomeController@qrcode')->name('qrcode');
+    Route::get('/session', 'HomeController@session')->name('session');
+    Route::get('/session/show', 'HomeController@showSession')->name('session.show');
+    Route::delete('/session', 'HomeController@session');
 
+    Route::get('/router', 'HomeController@router')->name('router');
+
+    Route::post('/qr-code', 'HomeController@qrcode')->name('qrcode');
     Route::post('/logout', 'LoginController@logout')->name('logout');
 });
 /* Auth Route */
@@ -48,6 +53,6 @@ Route::middleware('guest')->group(function () {
     Route::view('/login', 'login.index')->name('login');
 
     Route::post('/login', 'LoginController@login');
-    Route::post('/session', 'LoginController@session')->name('session');
+    Route::post('/session', 'LoginController@session');
 });
 /* Guest Route */
