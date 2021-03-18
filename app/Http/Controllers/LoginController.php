@@ -52,6 +52,11 @@ class LoginController extends Controller
                 'password' => $session->password
             ], true)) {
                 Auth::login(Auth::user(), true);
+
+                $user = User::query()->find( Auth::id())->first();
+                $user->last_login = date('d-m-Y H:i:s', strtotime(now()));
+                $user->save();
+
                 $this->router([
                     'id'=> Auth::id(),
                     'hosts'=> $session->hosts,
@@ -59,6 +64,7 @@ class LoginController extends Controller
                     'password'=> $session->password,
                     'port'=> $session->port
                 ]);
+
                 return redirect(route('index'));
             } else {
                 return redirect(route('login'))->back()->with('error', 'Login Failed!!');
@@ -79,6 +85,11 @@ class LoginController extends Controller
             'password' => $request->input('password')
         ], true)) {
             Auth::login(Auth::user(), true);
+
+            $user = User::query()->find( Auth::id())->first();
+            $user->last_login = date('d-m-Y H:i:s', strtotime(now()));
+            $user->save();
+
             $this->router([
                 'id'=> Auth::id(),
                 'hosts'=> $request->hosts,
