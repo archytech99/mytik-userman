@@ -26,12 +26,12 @@
 
                     <li class="menu-title">Setting</li>
                     <li>
-                        <a href="#" class="waves-effect">
+                        <a href="{{ route('session') }}" class="waves-effect">
                             <i class="dripicons-time-reverse"></i><span> Session </span>
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="waves-effect">
+                        <a href="{{ route('router') }}" class="waves-effect">
                             <i class="dripicons-information"></i><span> Router </span>
                         </a>
                     </li>
