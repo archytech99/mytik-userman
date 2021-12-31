@@ -17,7 +17,3 @@ use Illuminate\Support\Facades\Artisan;
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->describe('Display an inspiring quote');
-
-Artisan::command('jancox', function () {
-    $this->comment('OPO SU! PADU PO PIYE KENE CUK!!');
-})->describe('Jancox');
