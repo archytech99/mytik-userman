@@ -12,10 +12,10 @@
 
 ## Preview
 
-- ![Dasboard](storage/app/public/media/Screenshot_001.png)
-- ![Voucher](storage/app/public/media/Screenshot_002.png)
-- ![Pakcet](storage/app/public/media/Screenshot_003.png)
-- ![Hotspot Client](storage/app/public/media/Screenshot_004.png)
+- ![Dasboard](storage/app/media/Screenshot_001.png)
+- ![Voucher](storage/app/media/Screenshot_002.png)
+- ![Pakcet](storage/app/media/Screenshot_003.png)
+- ![Hotspot Client](storage/app/media/Screenshot_004.png)
 
 ## Security Vulnerabilities
 
