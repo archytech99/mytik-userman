@@ -64,7 +64,7 @@
         <script src="{{ asset('assets/js/session.js') }}"></script>
         <script>
             const csrfToken = "{{ csrf_token() }}",
-                getSession = { "url" : "{{ route('session.show') }}", "type" : "GET" },
+                getSession = { "url" : "{{ route('session.show') }}", "type" : "POST", "data" : {"_token": csrfToken} },
                 delSession = "{{ route('session') }}";
         </script>
     </x-slot>

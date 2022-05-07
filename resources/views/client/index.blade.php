@@ -56,8 +56,8 @@
         <script src="{{ asset('assets/vendor/datatables/responsive.bootstrap4.min.js') }}"></script>
         <script src="{{ asset('assets/js/client.js') }}"></script>
         <script>
-            const getClient = { "url" : "{{ route('client.show') }}", "type" : "GET" },
-                csrfToken = "{{ csrf_token() }}",
+            const csrfToken = "{{ csrf_token() }}",
+                getClient = { "url" : "{{ route('client.show') }}", "type" : "POST", "data" : {"_token": csrfToken} },
                 delClient = "{{ route('client') }}";
         </script>
     </x-slot>

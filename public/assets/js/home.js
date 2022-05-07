@@ -2,7 +2,7 @@
 $(document).ready(function() {
     init_count();
     init_index();
-    setInterval( function () { reload_index() }, 1000);
+    setInterval( function () { reload_index() }, 30000);
 });
 
 function init_count() {

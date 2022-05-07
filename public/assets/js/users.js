@@ -37,7 +37,8 @@ function init_user() {
         },
         'ajax'          : {
             "url"       : getUsers,
-            "type"      : "GET",
+            "type"      : "POST",
+            "data"      : {"_token": csrfToken},
             beforeSend  : function() {
                 goBlockUI(false);
             },

@@ -113,10 +113,8 @@
                     <div class="card">
                         <div class="card-body">
                         <h4 class="mt-0 header-title mb-4">GitHub Information</h4>
-                            <img src="https://github-readme-stats.vercel.app/api?username=archytech99&show_icons=true&theme=tokyonight&line_height=27"
-                                 alt="GitHub Stats" width="100%">
-                            <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=archytech99&langs_count=8&theme=tokyonight&layout=compact"
-                                 class="mt-3" alt="Skills" width="100%">
+                            <img src="https://github-readme-stats.vercel.app/api?username=archytech99&show_icons=true&theme=tokyonight&line_height=27" alt="GitHub Stats" width="100%">
+                            <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=archytech99&langs_count=8&theme=tokyonight&layout=compact" class="mt-3" alt="Skills" width="100%">
                         </div>
                     </div>
                 </div>
@@ -131,9 +129,9 @@
         <script src="{{ asset('assets/vendor/datatables/responsive.bootstrap4.min.js') }}"></script>
         <script src="{{ asset('assets/js/home.js') }}"></script>
         <script>
-            const getHome = { "url" : "{{ route('index.show') }}", "type" : "GET" },
+            const csrfToken = "{{ csrf_token() }}",
+                getHome = { "url" : "{{ route('index.show') }}", "type" : "POST", "data" : {"_token": csrfToken} },
                 cntHome = "{{ url('/?cnt=index') }}",
-                csrfToken = "{{ csrf_token() }}",
                 delHome = "{{ route('index') }}";
         </script>
     </x-slot>

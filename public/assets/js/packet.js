@@ -37,7 +37,8 @@ function init_packet() {
         },
         'ajax'          : {
             "url"       : getPacket,
-            "type"      : "GET",
+            "type"      : "POST",
+            "data"      : {"_token": csrfToken},
             beforeSend  : function() {
                 goBlockUI(false);
             },
