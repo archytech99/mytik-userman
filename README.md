@@ -3,12 +3,27 @@
 ## About MyTIK
 
 - Simple web application for User Management Hotspot.
-- Using framework Laravel 7.30.4
+- Using framework Laravel 7
+
+## Update `.env` files
+
+- Copy file `.env.example` to `.env`
+- Update the following params
+
+```env
+ROUTER_HOTSPOT_SERVER=all
+ROUTER_HOTSPOT_DNS=http://<your DNS hotspot>
+
+DB_CONNECTION=sqlite
+DB_DATABASE=<your path>/sqlite.db
+```
 
 ## Usage
 
-- Copy file `.env.example` to `.env`
+- Copy file `sqlite.db.std` to `sqlite.db`
 - Run command `php artisan key:generate` to create new `APP_KEY`
+- Run command `php artisan migrate` to generate table
+- Run command `npm run serve-dev` to run local development server
 
 ## Preview
 
