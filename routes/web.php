@@ -21,24 +21,24 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth')->group(function () {
     Route::get('/', 'HomeController@index')->name('index');
     Route::delete('/', 'HomeController@index');
-    Route::get('/show', 'HomeController@showIndex')->name('index.show');
+    Route::post('/show', 'HomeController@showIndex')->name('index.show');
 
     Route::get('/users', 'HomeController@users')->name('users');
-    Route::get('/users/show', 'HomeController@showUsers')->name('users.show');
+    Route::post('/users/show', 'HomeController@showUsers')->name('users.show');
     Route::post('/users', 'HomeController@users');
     Route::delete('/users', 'HomeController@users');
 
     Route::get('/packet', 'HomeController@packet')->name('packet');
-    Route::get('/packet/show', 'HomeController@showPacket')->name('packet.show');
+    Route::post('/packet/show', 'HomeController@showPacket')->name('packet.show');
     Route::post('/packet', 'HomeController@packet');
     Route::delete('/packet', 'HomeController@packet');
 
     Route::get('/client', 'HomeController@client')->name('client');
-    Route::get('/client/show', 'HomeController@showClient')->name('client.show');
+    Route::post('/client/show', 'HomeController@showClient')->name('client.show');
     Route::delete('/client', 'HomeController@client');
 
     Route::get('/session', 'HomeController@session')->name('session');
-    Route::get('/session/show', 'HomeController@showSession')->name('session.show');
+    Route::post('/session/show', 'HomeController@showSession')->name('session.show');
     Route::delete('/session', 'HomeController@session');
 
     Route::get('/router', 'HomeController@router')->name('router');
